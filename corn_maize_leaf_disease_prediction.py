@@ -14,6 +14,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 import os
+import streamlit as st
+import cv2
 from PIL import Image
 from tensorflow.keras import models, layers
 from keras.models import load_model
@@ -23,7 +25,7 @@ BATCH_SIZE = 32
 CHANNELS = 3
 
 dataset = tf.keras.preprocessing.image_dataset_from_directory(
-    'Data Resize',
+    './Data Resize',
     batch_size=BATCH_SIZE,
     image_size=(IMAGE_SIZE, IMAGE_SIZE),
     seed=123,
@@ -33,8 +35,6 @@ dataset = tf.keras.preprocessing.image_dataset_from_directory(
 class_names = dataset.class_names
 
 """### Build Web App Using Streamlit"""
-
-import streamlit as st
 
 @st.cache(allow_output_mutation=True)
 def load_model():
@@ -54,6 +54,8 @@ def import_and_predict(image, model):
     
     img_array = tf.keras.preprocessing.image.img_to_array(image)
     img_array = tf.expand_dims(img_array, 0)
+    img_array = cv2.resize(img_array,(256,256))
+    img_array = np.reshape(img_array,[1,256,256,3])
 
     predictions = model.predict(img_array)
     predicted_class = class_names[np.argmax(predictions[0])]
