@@ -14,6 +14,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 import os
+from PIL import Image
 from tensorflow.keras import models, layers
 from keras.models import load_model
 
