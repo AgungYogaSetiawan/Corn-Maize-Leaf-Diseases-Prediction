@@ -15,7 +15,7 @@ import pandas as pd
 import numpy as np
 import os
 import streamlit as st
-import cv2
+import cv2 as cv
 from PIL import Image
 from tensorflow.keras import models, layers
 from keras.models import load_model
@@ -54,7 +54,7 @@ def import_and_predict(image, model):
     
     img_array = tf.keras.preprocessing.image.img_to_array(image)
     img_array = tf.expand_dims(img_array, 0)
-    img_array = cv2.resize(img_array,(256,256))
+    img_array = cv.resize(img_array,(256,256))
     img_array = np.reshape(img_array,[1,256,256,3])
 
     predictions = model.predict(img_array)
