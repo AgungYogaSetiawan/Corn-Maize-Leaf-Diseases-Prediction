@@ -15,7 +15,7 @@ import pandas as pd
 import numpy as np
 import os
 import streamlit as st
-import cv2
+from cv2 import cv2
 from PIL import Image
 from tensorflow.keras import models, layers
 from keras.models import load_model
