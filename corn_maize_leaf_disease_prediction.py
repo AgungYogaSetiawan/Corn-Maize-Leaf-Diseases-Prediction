@@ -53,8 +53,8 @@ def import_and_predict(image, model):
     
     img_array = tf.keras.preprocessing.image.img_to_array(image)
     img_array = tf.expand_dims(img_array, 0)
-    img_array = np.resize(img_array,(256,256))
-    img_array = np.reshape(img_array,[1,256,256,3])
+    # img_array = np.resize(img_array,(256,256))
+    img_array = tf.reshape(img_array,[1,256,256,3])
 
     predictions = model.predict(img_array)
     predicted_class = class_names[np.argmax(predictions[0])]
