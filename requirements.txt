@@ -1,0 +1,6 @@
+tensorflow==2.10.0
+matplotlib==3.3.3
+pandas==1.2.2
+numpy==1.23.1
+streamlit==1.12.2
+keras==2.10.0
