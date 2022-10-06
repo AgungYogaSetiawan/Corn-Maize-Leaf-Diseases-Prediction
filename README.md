@@ -1,7 +1,7 @@
 
 # Corn Maize Leaf Disease Prediction
 
-Project ini dibuat untuk memprediksi suatu gejala pada daun tanaman jagung. Ada 4 kelas yaitu, Healthy, Gray Leaf Spot, Common Rust, dan Blight. Project ini menggunakan teknik CNN (Convulutional Neural Network) yang baik untuk memprediksi sebuah gambar.
+This project was created to predict a symptom in the leaves of corn plants. There are 4 classes, namely, Healthy, Gray Leaf Spot, Common Rust, and Blight. This project uses a good CNN (Convulational Neural Network) technique to predict an image.
 
 
 
@@ -9,12 +9,12 @@ Project ini dibuat untuk memprediksi suatu gejala pada daun tanaman jagung. Ada 
 ## Demo
 
 
-Demo Aplikasi: https://agungyogasetiawan-cor-corn-maize-leaf-disease-prediction-5hv55d.streamlitapp.com/
+Application Demo: https://agungyogasetiawan-cor-corn-maize-leaf-disease-prediction-5hv55d.streamlitapp.com/
 
-Code Model Building CNN: [Klik ini untuk Code pembuatan model CNN di Google Colab](https://colab.research.google.com/drive/16vroV5lLsZIMYTduFHiYOXs9uKrw7zGc)
+Code Model Building CNN: [Click here for CNN modeling code on Google Colab](https://colab.research.google.com/drive/16vroV5lLsZIMYTduFHiYOXs9uKrw7zGc)
 ## Code
 
-Import library yang diperlukan
+Import required libraries
 
 ```bash
 import tensorflow as tf
@@ -28,7 +28,7 @@ from tensorflow.keras import models, layers
 from keras.models import load_model
 ```
 
-Membuat nilai konstanta
+Creating a constant value
 
 ```bash
 IMAGE_SIZE = 256
@@ -36,7 +36,7 @@ BATCH_SIZE = 32
 CHANNELS = 3
 ```
 
-Memasukkan folder data dengan fungsi image_dataset_from_directory fungsinya untuk memasukkan folder dataset yang berisi gambar dari local
+Entering data folder with function image_dataset_from_directory function to enter dataset folder containing images from local
 ```bash
 dataset = tf.keras.preprocessing.image_dataset_from_directory(
     './Data Resize',
@@ -47,14 +47,14 @@ dataset = tf.keras.preprocessing.image_dataset_from_directory(
 )
 ```
 
-Method class_names untuk menampilkan class yang ada di folder dataset
+The class_names method to display the classes in the dataset folder
 
 ```bash
 class_names = dataset.class_names
 #['Blight', 'Common_Rust', 'Gray_Leaf_Spot', 'Healthy']
 ```
 
-Membuat fungsi load model 
+Creating a load model function
 ```bash
 def load_model():
   model=tf.keras.models.load_model('model_corn_maize.h5')
@@ -62,12 +62,12 @@ def load_model():
 model=load_model()
 ```
 
-Fungsi dari streamlit yaitu untuk upload sebuah file
+The function of streamlit is to upload a file
 ```bash
 file = st.file_uploader("Please upload an file image", type=["jpg", "png", "jpeg"])
 ```
 
-Fungsi untuk memprediksi sebuah gambar, dan gambar tersebut dirubah menjadi sebuah array untuk dapat dibaca oleh mesin. Fungsi ini mengembalikan prediksi kelas dan skor prediksi
+The function is to predict an image, and the image is converted into an array to be read by the machine. This function returns class prediction and predicted score
 ```bash
 def import_and_predict(image, model):
     
@@ -80,7 +80,7 @@ def import_and_predict(image, model):
     return predicted_class, score
 ```
 
-Sebuah perintah kondisi, jika file tidak kosong maka akan menampilkan gambar yang kita upload dan memanggil fungsi prediksi yang mengembalikan prediksi kelas dan skor prediksi nya. Apbila kosong maka hanya menampilkan sebuah teks
+A condition command, if the file is not empty it will display the uploaded image and call the prediction function which returns the class prediction and its prediction score. If it is empty then it only displays a text
 ```bash
 if file is not None:
     image = Image.open(file)
