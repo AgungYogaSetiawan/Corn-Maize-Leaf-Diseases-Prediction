@@ -12,6 +12,12 @@ This project was created to predict a symptom in the leaves of corn plants. Ther
 Application Demo: https://agungyogasetiawan-cor-corn-maize-leaf-disease-prediction-5hv55d.streamlitapp.com/
 
 Code Model Building CNN: [Click here for CNN modeling code on Google Colab](https://colab.research.google.com/drive/16vroV5lLsZIMYTduFHiYOXs9uKrw7zGc)
+
+To run the app in your local machine, first go to your directory and write this syntax in terminal
+```bash
+streamlit run yournamefile.py
+```
+
 ## Code
 
 Import required libraries
